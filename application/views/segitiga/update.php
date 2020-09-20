@@ -6,23 +6,23 @@ $this->load->view('partials/header');
 <hr>
 <div class="card mx-auto" style="width: 50%">
     <div class="card-header text-center">
-        Form Tambah Segitiga
+        Form Update Segitiga
     </div>
     <div class="card-body">
-        <form method="post" action="<?= base_url("segitiga/create") ?>">
+        <form method="post" action="<?= base_url("segitiga/update/$data_segitiga->id") ?>">
             <div class="form-group">
                 <label>Panjang Alas</label>
-                <input type="number" class="form-control" name="alas">
+                <input type="number" class="form-control" name="alas" value="<?= $data_segitiga->alas ?>">
                 <small class="form-text text-muted"><?= form_error('alas') ?></small>
             </div>
             <div class="form-group">
                 <label>Panjang Tinggi</label>
-                <input type="number" class="form-control" name="tinggi">
+                <input type="number" class="form-control" name="tinggi" value="<?= $data_segitiga->tinggi ?>">
                 <small class="form-text text-muted"><?= form_error('tinggi') ?></small>
             </div>
             <div class="form-group">
                 <label>Panjang Garis Miring</label>
-                <input type="number" class="form-control" name="garis_miring">
+                <input type="number" class="form-control" name="garis_miring" value="<?= $data_segitiga->garis_miring ?>">
                 <small class="form-text text-muted"><?= form_error('garis_miring') ?></small>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

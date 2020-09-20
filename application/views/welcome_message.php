@@ -1,18 +1,28 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to Kalkulator Bangun Datar</title>
-</head>
-<body>
+$this->load->view('partials/header');
+?>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav mx-auto">
+      <a class="nav-link active" href="<?= base_url() ?>">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="<?= base_url('persegi') ?>">Persegi</a>
+      <a class="nav-link" href="<?= base_url('segitiga') ?>">Segitiga</a>
+      <a class="nav-link" href="<?= base_url('lingkaran') ?>">Lingkaran</a>
+    </div>
+  </div>
+</nav>
+<!-- 
 <a href="<?= base_url('persegi') ?>">Persegi</a>
 <a href="<?= base_url('segitiga') ?>">Segitiga</a>
-<a href="<?= base_url('lingkaran') ?>">Lingkaran</a>
+<a href="<?= base_url('lingkaran') ?>">Lingkaran</a> -->
+<h4 class="text-center mt-4">Total Perhitungan</h4>
 <hr>
-<div style="height: 400px; width: 400px">
+<div class="mx-auto" style="height: 400px; width: 400px">
     <canvas id="myChart" width="200" height="200"></canvas>
 </div>
 
@@ -57,5 +67,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     });
 </script>
 
-</body>
-</html>
+<?php
+$this->load->view('partials/footer');
+?>

@@ -32,7 +32,7 @@ class Persegi extends CI_Controller {
             $this->load->view('persegi/create');
         } else {
             $this->Model_Persegi->save();
-            $this->session->set_flashdata('sisiPersegi', 'ditambahkan');
+            $this->session->set_flashdata('tambahPersegi', 'ditambahkan');
             redirect(base_url('persegi'));
         }
     }
@@ -40,10 +40,38 @@ class Persegi extends CI_Controller {
     public function export()
     {
         $data =[
-          'title' => 'Excel Data Persegi',
-          'datapersegi' => $this->Model_Persegi->getAll()
+            'title' => 'Excel Data Persegi',
+            'datapersegi' => $this->Model_Persegi->getAll()
         ];
 
         $this->load->view('persegi/persegi_export', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->Model_Persegi->destroy($id);
+        $this->session->set_flashdata('hapusPersegi', 'dihapus');
+        redirect(base_url('persegi'));
+    }
+
+    public function update($id)
+    {
+        $data['data_persegi'] = $this->Model_Persegi->getDataById($id);
+        $config = [
+            [
+                'field' => 'sisi',
+                'label' => 'Sisi Persegi',
+                'rules' => 'required'
+            ]
+        ];
+        $this->form_validation->set_rules($config);
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('persegi/update', $data);
+        } else {
+            $this->Model_Persegi->put($id);
+            $this->session->set_flashdata('editPersegi', 'diupdate');
+            redirect(base_url('persegi'));
+        }
     }
 }

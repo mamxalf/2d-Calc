@@ -5,13 +5,14 @@ $this->load->view('partials/header');
 <hr>
 <div class="card mx-auto" style="width: 50%">
     <div class="card-header text-center">
-        Form Tambah Persegi
+        Form Update Persegi
     </div>
     <div class="card-body">
-        <form method="post" action="<?= base_url("persegi/create") ?>">
+        <form method="post" action="<?= base_url("persegi/update/$data_persegi->id") ?>">
+        <input type="hidden" class="form-control" name="id" value="<?= $data_persegi->id ?>">
             <div class="form-group">
                 <label>Panjang Sisi</label>
-                <input type="number" class="form-control" name="sisi">
+                <input type="number" class="form-control" name="sisi" value="<?= $data_persegi->sisi ?>">
                 <small class="form-text text-muted"><?= form_error('sisi') ?></small>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
